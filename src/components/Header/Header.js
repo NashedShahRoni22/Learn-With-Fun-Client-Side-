@@ -14,7 +14,7 @@ const Header = () => {
           </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto navlink">
+          <Nav className="ms-auto me-auto navlink">
             <Link to="/">Home</Link>
             <Link to="/courses">Courses</Link>
             <Link to="/">FAQ</Link>
@@ -28,7 +28,7 @@ const Header = () => {
               className="rounded-circle"
             ></img>
           </Link>
-          <Link className="btn btn-primary ms-2">Login</Link>
+          <Link className="btn btn-light ms-2">Login</Link>
         </Navbar.Collapse>
     </Navbar>
   );
