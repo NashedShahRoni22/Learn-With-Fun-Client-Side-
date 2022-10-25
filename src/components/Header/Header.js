@@ -28,7 +28,7 @@ const Header = () => {
               className="rounded-circle"
             ></img>
           </Link>
-          <Link className="btn btn-light ms-2">Login</Link>
+          <Link className="btn btn-light ms-2" to='/login'>Login</Link>
         </Navbar.Collapse>
     </Navbar>
   );

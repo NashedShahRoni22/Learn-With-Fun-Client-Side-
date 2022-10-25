@@ -4,6 +4,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
+import { FaChevronCircleRight } from "react-icons/fa";
 
 const Courses = () => {
   const courses = useLoaderData();
@@ -42,9 +43,9 @@ const Courses = () => {
                 <Card.Body>
                   <Card.Title>{course.title}</Card.Title>
                   <Card.Text className="text-muted">
-                    {course.description.slice(0, 150)}...
+                    {course.description.slice(0, 150)}<span className="text-primary">...Read More</span>
                   </Card.Text>
-                    <Link className="btn btn-primary w-100" to={`/courses/${course.id}`}>Course Details</Link>
+                    <Link className="btn btn-primary w-100" to={`/courses/${course.id}`}>Course Details<FaChevronCircleRight className="ms-3"/></Link>
                 </Card.Body>
               </Card>
             </div>
