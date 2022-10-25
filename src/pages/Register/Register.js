@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { DiGithubAlt } from "react-icons/di";
 import { useContext } from "react";
@@ -9,6 +9,7 @@ import { AuthContext } from "../../context/AuthProvider";
 
 const Register = () => {
   const { userRegistration, loginGoogle } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   // handel google login
   const handelGoogleLogin = () => {
@@ -36,6 +37,7 @@ const Register = () => {
     .then(res=>{
       const user = res.user;
       console.log(user);
+      navigate('/login')
       form.reset();
     })
     .catch(e=>{

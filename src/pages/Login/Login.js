@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { DiGithubAlt } from "react-icons/di";
 import { useContext } from "react";
@@ -9,6 +9,10 @@ import { AuthContext } from "../../context/AuthProvider";
 
 const Login = () => {
   const { loginGoogle, userLogin } = useContext(AuthContext);
+  //private route setup
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   // handel google login
   const handelGoogleLogin = () => {
     loginGoogle()
@@ -36,6 +40,7 @@ const Login = () => {
       const user = res.user;
       console.log(user);
       form.reset();
+      navigate(from, { replace: true });
     })
     .catch(e=>{
       console.error(e);
