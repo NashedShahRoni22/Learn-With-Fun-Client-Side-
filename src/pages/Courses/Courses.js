@@ -7,7 +7,7 @@ const Courses = () => {
   const courses = useLoaderData();
   return (
     <section className="row py-5 my-5">
-      <div className="col-4">
+      <div className="col-3">
         <ListGroup>
           {courses.map((course) => (
             <Link to={`/courses/${course.id}`} className="btn">
@@ -16,7 +16,7 @@ const Courses = () => {
           ))}
         </ListGroup>
       </div>
-      <div className="col-8">
+      <div className="col-9">
         <div className="row row-cols-1 row-cols-lg-3 g-5">
           {courses.map((course) => (
             <div>

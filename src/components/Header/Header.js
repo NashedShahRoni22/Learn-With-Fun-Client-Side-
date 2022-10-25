@@ -3,11 +3,15 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 import "./Header.css";
+import logo from "../../img/logo.png"
 
 const Header = () => {
   return (
-    <Navbar expand="lg">
-        <Navbar.Brand href="#home">Learn With Fun</Navbar.Brand>
+    <Navbar expand="md" className="navbar-container">
+        <Navbar.Brand href="#home">
+          <img src={logo} alt="" height="40px"/>
+          <span className="text-light ms-3">Learn With Fun</span>
+          </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto navlink">
