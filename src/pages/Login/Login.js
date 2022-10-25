@@ -6,6 +6,7 @@ import { FcGoogle } from "react-icons/fc";
 import { DiGithubAlt } from "react-icons/di";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthProvider";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const { loginGoogle, userLogin } = useContext(AuthContext);
@@ -40,7 +41,12 @@ const Login = () => {
       const user = res.user;
       console.log(user);
       form.reset();
-      navigate(from, { replace: true });
+      if(user.emailVarified){
+        navigate(from, { replace: true });
+      }
+      else{
+        toast.error('Please verify your email!')
+      }
     })
     .catch(e=>{
       console.error(e);

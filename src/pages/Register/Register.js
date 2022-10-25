@@ -6,9 +6,10 @@ import { FcGoogle } from "react-icons/fc";
 import { DiGithubAlt } from "react-icons/di";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthProvider";
+import toast from "react-hot-toast";
 
 const Register = () => {
-  const { userRegistration, loginGoogle } = useContext(AuthContext);
+  const { userRegistration, loginGoogle, verifyEmail, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
 
   // handel google login
@@ -23,22 +24,51 @@ const Register = () => {
       });
   };
 
-  //Handel Registration
+  //handel Registration
   const handelRegistration =(e)=>{
     e.preventDefault();
     const form = e.target;
 
     const email = form.email.value;
     const password = form.password.value;
+    const name = form.name.value;
+    const photoURL = form.photoURL.value;
 
-    console.log(email, password);
+    console.log(email, password, name, photoURL);
 
     userRegistration(email,password)
     .then(res=>{
       const user = res.user;
       console.log(user);
-      navigate('/login')
+      emailVerify();
+      navigate('/login');
       form.reset();
+      userProfileUpdate(name, photoURL);
+      toast.success('Please verify your email before Login!');
+    })
+    .catch(e=>{
+      console.error(e);
+    })
+  }
+  //verify user email address
+  const emailVerify =()=>{
+    verifyEmail()
+    .then(()=>{
+      console.log("Verification email sent!");
+    })
+    .then(e=>{
+      console.error(e);
+    })
+  }
+  //update user profile
+  const userProfileUpdate =(name, photoURL)=>{
+    const profile ={
+      displayName:name,
+      photoURL:photoURL,
+    }
+    updateUserProfile(profile)
+    .then(()=>{
+      console.log("Profile updated!");
     })
     .catch(e=>{
       console.error(e);
@@ -54,7 +84,7 @@ const Register = () => {
             {" "}
             <strong>Enter Name</strong>{" "}
           </Form.Label>
-          <Form.Control type="text" name="name" placeholder="Enter name" />
+          <Form.Control type="text" name="name" placeholder="Enter name" required/>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formPhotoUrl">
@@ -62,7 +92,7 @@ const Register = () => {
             {" "}
             <strong>Enter Photo URL</strong>{" "}
           </Form.Label>
-          <Form.Control type="text" name="photoURL" placeholder="Enter Photo URL" />
+          <Form.Control type="text" name="photoURL" placeholder="Enter Photo URL" required/>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicEmail">
