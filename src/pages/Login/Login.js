@@ -2,8 +2,25 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
+import { DiGithubAlt } from "react-icons/di";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthProvider";
 
 const Login = () => {
+  const { loginGoogle } = useContext(AuthContext);
+  // handel google login
+  const handelGoogleLogin = () => {
+    loginGoogle()
+      .then((res) => {
+        const user = res.user;
+        console.log(user);
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+  };
+
   return (
     <section className="py-5">
       <h3 className="text-light my-3">Please Login !</h3>
@@ -34,6 +51,20 @@ const Login = () => {
           Create a New Account
         </Link>
       </p>
+
+      <div className="optional-login">
+        <Button
+          className="google btn-light w-100 my-2"
+          onClick={handelGoogleLogin}
+        >
+          <FcGoogle></FcGoogle>
+          <span className="ms-2">Sign In with Google</span>
+        </Button>
+        <Button className="google btn-light w-100 my-2">
+          <DiGithubAlt></DiGithubAlt>
+          <span className="ms-2">Sign In with Github</span>
+        </Button>
+      </div>
     </section>
   );
 };

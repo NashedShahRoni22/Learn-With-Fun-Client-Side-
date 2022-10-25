@@ -2,6 +2,8 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
+import { DiGithubAlt } from "react-icons/di";
 
 const Register = () => {
   return (
@@ -50,6 +52,17 @@ const Register = () => {
           Please Login
         </Link>
       </p>
+
+      <div className="optional-login">
+        <Button className="google btn-light w-100 my-2">
+          <FcGoogle></FcGoogle>
+          <span className="ms-2">Sign In with Google</span>
+        </Button>
+        <Button className="google btn-light w-100 my-2">
+          <DiGithubAlt></DiGithubAlt>
+          <span className="ms-2">Sign In with Github</span>
+        </Button>
+      </div>
     </section>
   );
 };
