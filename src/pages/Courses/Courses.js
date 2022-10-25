@@ -14,7 +14,7 @@ const Courses = () => {
   return (
     <section className="row py-5 my-5">
       <div className="col-3">
-        <Button variant="light" className="d-md-none" onClick={handleShow}>
+        <Button variant="outline-light" className="d-md-none" onClick={handleShow}>
           Courses Category
         </Button>
 
@@ -25,7 +25,7 @@ const Courses = () => {
           <Offcanvas.Body>
             <ListGroup>
               {courses.map((course) => (
-                <Link to={`/courses/${course.id}`} className="btn">
+                <Link to={`/courses/${course.id}`} className="btn" key={course.id}>
                   <ListGroup.Item>{course.name}</ListGroup.Item>
                 </Link>
               ))}
@@ -36,15 +36,15 @@ const Courses = () => {
       <div className="col-9">
         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5">
           {courses.map((course) => (
-            <div>
+            <div key={course.id}>
               <Card className="shadow">
                 <Card.Img variant="top" src={course.img} />
                 <Card.Body>
-                  <Card.Title>{course.name}</Card.Title>
-                  <Card.Text>
-                    {course.description.slice(0, 200)}
-                    <Link to={`/courses/${course.id}`}>...Read More</Link>
+                  <Card.Title>{course.title}</Card.Title>
+                  <Card.Text className="text-muted">
+                    {course.description.slice(0, 150)}...
                   </Card.Text>
+                    <Link className="btn btn-primary w-100" to={`/courses/${course.id}`}>Course Details</Link>
                 </Card.Body>
               </Card>
             </div>

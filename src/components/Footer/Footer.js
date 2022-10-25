@@ -3,7 +3,9 @@ import React from 'react';
 const Footer = () => {
     return (
         <div>
-            <h1>I am from Footer</h1>
+            <p className='text-center text-light py-3'>
+                Copyright Reserved by Learn with Fun 2022
+            </p>
         </div>
     );
 };
