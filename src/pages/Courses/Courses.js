@@ -4,7 +4,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { FaChevronCircleRight, FaDiscourse } from "react-icons/fa";
+import { FaDiscourse } from "react-icons/fa";
 
 const Courses = () => {
   const courses = useLoaderData();
@@ -13,9 +13,14 @@ const Courses = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   return (
-    <section className="row py-5 my-5 mx-auto container">
+    <section className="row py-5 mx-auto container">
+      <h2 className="text-center mb-5 fw-bold">Select Your Desire Course!</h2>
       <div className="col-3">
-        <Button variant="outline-primary" className="d-md-none" onClick={handleShow}>
+        <Button
+          variant="outline-primary"
+          className="d-md-none"
+          onClick={handleShow}
+        >
           <FaDiscourse></FaDiscourse>
         </Button>
 
@@ -26,8 +31,12 @@ const Courses = () => {
           <Offcanvas.Body>
             <ListGroup>
               {courses.map((course) => (
-                <Link to={`/courses/${course.id}`} className="btn" key={course.id}>
-                  <ListGroup.Item>{course.name}</ListGroup.Item>
+                <Link
+                  to={`/courses/${course.id}`}
+                  className="course-btn my-1"
+                  key={course.id}
+                >
+                  {course.name}
                 </Link>
               ))}
             </ListGroup>
@@ -42,10 +51,15 @@ const Courses = () => {
                 <Card.Img variant="top" src={course.img} />
                 <Card.Body>
                   <Card.Title>{course.title}</Card.Title>
-                  <Card.Text className="text-muted">
-                    {course.description.slice(0, 150)}<span className="text-primary">...Read More</span>
+                  <Card.Text className="text-muted my-4">
+                    {course.description.slice(0, 150)}
+                    <span className="text-primary">...Read More</span>
                   </Card.Text>
-                    <Link className="btn btn-primary w-100" to={`/courses/${course.id}`}>Course Details<FaChevronCircleRight className="ms-3"/></Link>
+                  <p className="text-center">
+                  <Link className="course-btn" to={`/courses/${course.id}`}>
+                    Course Details
+                  </Link>
+                  </p>
                 </Card.Body>
               </Card>
             </div>

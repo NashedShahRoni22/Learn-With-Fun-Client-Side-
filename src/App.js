@@ -5,10 +5,10 @@ import { router } from './routes/Route';
 
 function App() {
   return (
-    <div className='App'>
+    <section>
       <RouterProvider router={router} />
       <Toaster></Toaster>
-    </div>
+    </section>
   );
 }
 

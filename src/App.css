@@ -1,1 +1,25 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+*{
+    font-family: 'Nunito', sans-serif;
+}
+.home-btn, .course-btn{
+    background-color: #5837d0;
+    color: white;
+    border: 2px solid #5837d0;
+    border-radius: 8px;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+.home-btn:hover{
+    background: none;
+    color: white;
+    border: 2px solid #5837d0;
+}
+.course-btn:hover{
+    background: none;
+    color: black;
+    transition: 0.3s ease;
+}
+.card-head, .checkout-header{
+    background-color: #5837d0;
+}

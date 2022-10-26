@@ -7,65 +7,65 @@ import logo from "../../img/logo.png";
 import { AuthContext } from "../../context/AuthProvider";
 import { Container } from "react-bootstrap";
 import { FaBars } from "react-icons/fa";
+import { MdLogout, MdLogin } from "react-icons/md";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
 
-  const handelLogOut =()=>{
+  //handel user log out
+  const handelLogOut = () => {
     logOut()
-    .then(()=>{
-    })
-    .catch(e =>{
-      console.error(e);
-    })
-  }
+      .then(() => {})
+      .catch((e) => {
+        console.error(e);
+      });
+  };
   return (
     <Navbar expand="md" className="navbar-container">
       <Container>
-      <Navbar.Brand href="#home">
-        <img src={logo} alt="" height="40px" />
-        <span className="text-light ms-3">Learn with Fun</span>
-      </Navbar.Brand>
+        <Navbar.Brand>
+          <Link to='/'><img src={logo} alt="" height="40px" /></Link>
+          <span className="text-light ms-3">Learn with Fun</span>
+        </Navbar.Brand>
 
-      <Navbar.Toggle aria-controls="basic-navbar-nav" >
+        <Navbar.Toggle aria-controls="basic-navbar-nav">
           <FaBars className="text-light"></FaBars>
-      </Navbar.Toggle>
+        </Navbar.Toggle>
 
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="ms-auto me-auto navlink">
-          <Link to="/">Home</Link>
-          <Link to="/courses">Courses</Link>
-          <Link to="/">FAQ</Link>
-          <Link to="/">Blog</Link>
-        </Nav>
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="ms-auto me-auto navlink">
+            <Link to="/">Home</Link>
+            <Link to="/courses">Courses</Link>
+            <Link to="/">FAQ</Link>
+            <Link to="/">Blog</Link>
+          </Nav>
 
-        {user?.uid ? (
-          <>
-            <Link
-              to="/"
-              
-              data-toggle="tooltip"
-              data-placement="bottom"
-              title={user?.displayName}
-            >
-              <img
-                src={user?.photoURL}
-                height="40px"
-                alt=""
-                className="rounded-circle"
-              ></img>
+          {user?.uid ? (
+            <>
+              <Link
+                to="/"
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title={user?.displayName}
+              >
+                <img
+                  src={user?.photoURL}
+                  height="40px"
+                  alt=""
+                  className="rounded-circle"
+                ></img>
+              </Link>
+              <MdLogout
+                onClick={handelLogOut}
+                className="display-5 text-light ms-3"
+              />
+            </>
+          ) : (
+            <Link to="/login">
+              <MdLogin className="display-5 text-light" />
             </Link>
-
-            <Link className="btn btn-danger ms-2" onClick={handelLogOut}>
-              Log Out
-            </Link>
-          </>
-        ) : (
-          <Link className="btn btn-light ms-2" to="/login">
-            Login
-          </Link>
-        )}
-      </Navbar.Collapse>
+          )}
+        </Navbar.Collapse>
       </Container>
     </Navbar>
   );

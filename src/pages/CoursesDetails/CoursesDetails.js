@@ -12,18 +12,25 @@ import {
 
 const CoursesDetails = () => {
   const course = useLoaderData();
-  const { title, thumbnail, description, video, quiz, projects, price } =
+  const { id, 
+    title, 
+    thumbnail, 
+    description, 
+    video, 
+    quiz, 
+    projects, 
+    price } =
     course;
   return (
     <section className="py-5 my-5 container">
       <Card>
-        <Card.Header>
+        <div className="card-head p-2 text-light">
           {" "}
           <h4>
             <FcViewDetails className="text-primary me-2"></FcViewDetails>
             {title}
           </h4>{" "}
-        </Card.Header>
+        </div>
 
         <div className="course-details row align-items-center p-2">
           <div className="col-8">
@@ -31,17 +38,20 @@ const CoursesDetails = () => {
           </div>
           <div className="col-4">
             <h5>
-              <FcVideoCall />
-              Video: {video}
+              <FcVideoCall className="me-2"/>
+              {video} videos
             </h5>
             <h5>
-              <FcAnswers /> Quiz: {quiz}
+              <FcAnswers className="me-2"/>
+              {quiz} Quizs
             </h5>
             <h5>
-              <FcParallelTasks /> Projects: {projects}
+              <FcParallelTasks className="me-2"/>
+              {projects} Projects
             </h5>
             <h5>
-              <FcMoneyTransfer /> Price: {price} BDT
+              <FcMoneyTransfer className="me-2"/> 
+              {price} BDT
             </h5>
           </div>
         </div>
@@ -53,7 +63,7 @@ const CoursesDetails = () => {
             <hr />
             <span className="text-muted">{description}</span>
           </Card.Text>
-          <Link className="btn btn-primary w-100" to="/checkout">
+          <Link className="course-btn" to={`/checkout/${id}`}>
             Get Premium <FaCrown />
           </Link>
         </Card.Body>

@@ -1,38 +1,41 @@
-import React from "react";
+import React, { useContext } from "react";
 import logo from "../../img/logo.png";
-import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { AuthContext } from "../../context/AuthProvider";
+import { Link, useLoaderData } from "react-router-dom";
 
 const Checkout = () => {
+    const {user} = useContext(AuthContext);
+
+    const{title, price}=useLoaderData();
   return (
-    <section className="container mx-auto py-5 my-5">
-      <div className="checkout-header d-flex justify-content-center align-items-center gap-2">
+    <section className="container mx-auto p-5 my-5 bg-light">
+      <div className="checkout-header d-flex justify-content-center align-items-center gap-2 p-2 text-light">
         <img src={logo} height="40px" alt="" />
         <h5>Checkout</h5>
       </div>
-      <hr />
-      <Form className="my-5">
+      <Form className="my-3">
       <h5 className="my-3">Product Information</h5>
         <div className="form-address d-flex justify-content-between gap-2">
           <Form.Group className="mb-3 w-50">
             <Form.Label>Selected Course</Form.Label>
-            <Form.Control defaultValue={"Learn HTML in 1 Hour"} readOnly />
+            <Form.Control defaultValue={title} readOnly />
           </Form.Group>
 
           <Form.Group className="mb-3 w-50">
             <Form.Label>Price</Form.Label>
-            <Form.Control defaultValue={500} readOnly />
+            <Form.Control defaultValue={price} readOnly />
           </Form.Group>
         </div>
         <h5 className="my-3">Billing Address</h5>
         <Form.Group className="mb-3">
           <Form.Label>Username</Form.Label>
-          <Form.Control />
+          <Form.Control defaultValue={user?.displayName} readOnly/>
         </Form.Group>
 
         <Form.Group className="mb-3">
           <Form.Label>Email</Form.Label>
-          <Form.Control />
+          <Form.Control defaultValue={user?.email} readOnly/>
         </Form.Group>
 
         <Form.Group className="mb-3">
@@ -66,16 +69,16 @@ const Checkout = () => {
           <Form.Check type="checkbox" label="Agree with terms and conditions" />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+        <Form.Group className="mb-5" controlId="formBasicCheckbox">
           <Form.Check
             type="checkbox"
             label="Shipping address is the same as my billing address"
           />
         </Form.Group>
 
-        <Button variant="primary" type="submit">
+        <Link className="course-btn">
           Continue Checkout
-        </Button>
+        </Link>
       </Form>
     </section>
   );
