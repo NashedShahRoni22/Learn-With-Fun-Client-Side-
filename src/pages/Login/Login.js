@@ -19,6 +19,7 @@ const Login = () => {
     loginGoogle()
       .then((res) => {
         const user = res.user;
+        navigate(from, { replace: true });
         console.log(user);
       })
       .catch((e) => {
@@ -26,8 +27,8 @@ const Login = () => {
       });
   };
 
-   //handel registration
-   const handelLogin =(e)=>{
+  //handel user login
+  const handelLogin = (e) => {
     e.preventDefault();
     const form = e.target;
 
@@ -36,22 +37,18 @@ const Login = () => {
 
     console.log(email, password);
 
-    userLogin(email,password)
-    .then(res=>{
-      const user = res.user;
-      console.log(user);
-      form.reset();
-      if(user.emailVarified){
+    userLogin(email, password)
+      .then((res) => {
+        const user = res.user;
+        console.log(user);
+        form.reset();
         navigate(from, { replace: true });
-      }
-      else{
-        toast.error('Please verify your email!')
-      }
-    })
-    .catch(e=>{
-      console.error(e);
-    })
-  }
+        toast.success('Login Successfull!')
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+  };
 
   return (
     <section className="py-5">
@@ -62,7 +59,12 @@ const Login = () => {
             {" "}
             <strong>Email address</strong>{" "}
           </Form.Label>
-          <Form.Control type="email" name="email" placeholder="Enter email" required/>
+          <Form.Control
+            type="email"
+            name="email"
+            placeholder="Enter email"
+            required
+          />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -70,7 +72,12 @@ const Login = () => {
             {" "}
             <strong>Password</strong>{" "}
           </Form.Label>
-          <Form.Control type="password" name="password" placeholder="Password" required/>
+          <Form.Control
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+          />
         </Form.Group>
 
         <Button variant="primary" type="submit" className="w-100">

@@ -4,7 +4,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { FaChevronCircleRight } from "react-icons/fa";
+import { FaChevronCircleRight, FaDiscourse } from "react-icons/fa";
 
 const Courses = () => {
   const courses = useLoaderData();
@@ -16,7 +16,7 @@ const Courses = () => {
     <section className="row py-5 my-5">
       <div className="col-3">
         <Button variant="outline-light" className="d-md-none" onClick={handleShow}>
-          Courses Category
+          <FaDiscourse></FaDiscourse>
         </Button>
 
         <Offcanvas show={show} onHide={handleClose} responsive="md">

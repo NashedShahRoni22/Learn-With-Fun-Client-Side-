@@ -24,7 +24,7 @@ const Register = () => {
       });
   };
 
-  //handel Registration
+  //handel user registration
   const handelRegistration =(e)=>{
     e.preventDefault();
     const form = e.target;
@@ -44,7 +44,7 @@ const Register = () => {
       navigate('/login');
       form.reset();
       userProfileUpdate(name, photoURL);
-      toast.success('Please verify your email before Login!');
+      toast.success('User Registered Successfully!');
     })
     .catch(e=>{
       console.error(e);
