@@ -7,7 +7,8 @@ import { GoogleAuthProvider,
   createUserWithEmailAndPassword, 
   signInWithEmailAndPassword, 
   sendEmailVerification,
-  updateProfile} from "firebase/auth";
+  updateProfile,
+  GithubAuthProvider} from "firebase/auth";
 import { app } from "../firebase/firebase.config";
 import { useState } from "react";
 
@@ -17,6 +18,8 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
   //googleProvider
   const googleProvider = new GoogleAuthProvider();
+  //githubProvider
+  const githubProvider = new GithubAuthProvider();
   // set user information
   const [user, setUser] = useState(null);
   //spinner for loading state
@@ -27,6 +30,11 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
+  //login with github
+  const loginGithub =()=>{
+    setLoading(true);
+    return signInWithPopup(auth, githubProvider);
+  }
   //create user with email password
   const userRegistration =(email, password)=>{
     setLoading(true);
@@ -67,6 +75,7 @@ const AuthProvider = ({ children }) => {
      loading, 
      setLoading,
      loginGoogle, 
+     loginGithub,
      logOut, 
      userRegistration, 
      userLogin,

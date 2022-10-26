@@ -1,6 +1,10 @@
 .navbar-container{
     background-color: #5837D0;
 }
+.navbar-container svg{
+    height: 30px;
+    width: 30px;
+}
 .navlink a{
     text-decoration: none;
     margin: 8px 8px;

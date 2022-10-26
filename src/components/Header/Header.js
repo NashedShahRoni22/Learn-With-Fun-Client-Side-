@@ -7,11 +7,17 @@ import logo from "../../img/logo.png";
 import { AuthContext } from "../../context/AuthProvider";
 import { Container } from "react-bootstrap";
 import { FaBars } from "react-icons/fa";
-import { MdLogout, MdLogin } from "react-icons/md";
+import { MdLogout, MdLogin, MdDarkMode, MdOutlineDarkMode } from "react-icons/md";
+import { useState } from "react";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
 
+  const [theme, setTheme] = useState(<MdOutlineDarkMode className="text-light me-3"></MdOutlineDarkMode>)
+  //handelTheme
+  const handelTheme =()=>{
+    setTheme(<MdDarkMode className="text-light me-3"></MdDarkMode>)
+  }
   //handel user log out
   const handelLogOut = () => {
     logOut()
@@ -40,6 +46,11 @@ const Header = () => {
             <Link to="/blog">Blog</Link>
           </Nav>
 
+          {/* dark light logo  */}
+          <div onClick={handelTheme}>
+            {theme}
+          </div>
+
           {user?.uid ? (
             <>
               <Link
@@ -57,12 +68,12 @@ const Header = () => {
               </Link>
               <MdLogout
                 onClick={handelLogOut}
-                className="display-5 text-light ms-3"
+                className="text-light ms-3"
               />
             </>
           ) : (
             <Link to="/login">
-              <MdLogin className="display-5 text-light" />
+              <MdLogin className="text-light" />
             </Link>
           )}
         </Navbar.Collapse>

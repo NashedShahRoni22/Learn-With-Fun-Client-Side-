@@ -2,14 +2,13 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
-import { DiGithubAlt } from "react-icons/di";
+import { BsGoogle, BsGithub } from "react-icons/bs";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthProvider";
 import toast from "react-hot-toast";
 
 const Login = () => {
-  const { loginGoogle, userLogin } = useContext(AuthContext);
+  const { loginGoogle, loginGithub, userLogin } = useContext(AuthContext);
   //private route setup
   const navigate = useNavigate();
   const location = useLocation();
@@ -20,6 +19,20 @@ const Login = () => {
       .then((res) => {
         const user = res.user;
         navigate(from, { replace: true });
+        toast.success('User Registered Successfully!');
+        console.log(user);
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+  };
+  // handel github login
+  const handelGithubLogin = () => {
+    loginGithub()
+      .then((res) => {
+        const user = res.user;
+        navigate(from, { replace: true });
+        toast.success('User Registered Successfully!');
         console.log(user);
       })
       .catch((e) => {
@@ -43,7 +56,7 @@ const Login = () => {
         console.log(user);
         form.reset();
         navigate(from, { replace: true });
-        toast.success('Login Successfull!');
+        toast.success("Login Successfull!");
       })
       .catch((e) => {
         console.error(e);
@@ -82,7 +95,7 @@ const Login = () => {
           />
         </Form.Group>
 
-        <Button variant="primary" type="submit" className="w-100">
+        <Button variant="outline-primary" type="submit" className="w-100">
           Login
         </Button>
       </Form>
@@ -95,14 +108,19 @@ const Login = () => {
 
       <div className="optional-login">
         <Button
-          className="google btn-light w-100 my-2"
+          variant="outline-success"
+          className="w-100 my-2"
           onClick={handelGoogleLogin}
         >
-          <FcGoogle></FcGoogle>
+          <BsGoogle></BsGoogle>
           <span className="ms-2">Sign In with Google</span>
         </Button>
-        <Button className="google btn-light w-100 my-2">
-          <DiGithubAlt></DiGithubAlt>
+        <Button 
+        variant="outline-dark"
+        className="w-100 my-2"
+        onClick={handelGithubLogin}
+        >
+          <BsGithub></BsGithub>
           <span className="ms-2">Sign In with Github</span>
         </Button>
       </div>

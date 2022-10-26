@@ -2,14 +2,13 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Link, useNavigate } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
-import { DiGithubAlt } from "react-icons/di";
+import { BsGoogle, BsGithub } from "react-icons/bs";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthProvider";
 import toast from "react-hot-toast";
 
 const Register = () => {
-  const { userRegistration, loginGoogle, verifyEmail, updateUserProfile } = useContext(AuthContext);
+  const { userRegistration, loginGoogle, loginGithub, verifyEmail, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
 
   // handel google login
@@ -18,6 +17,22 @@ const Register = () => {
       .then((res) => {
         const user = res.user;
         console.log(user);
+        navigate('/');
+        toast.success('User Registered Successfully!');
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+  };
+
+  // handel github login
+  const handelGithubLogin = () => {
+    loginGithub()
+      .then((res) => {
+        const user = res.user;
+        console.log(user);
+        navigate('/');
+        toast.success('User Registered Successfully!');
       })
       .catch((e) => {
         console.error(e);
@@ -111,7 +126,7 @@ const Register = () => {
           <Form.Control type="password" name="password" placeholder="Password" required/>
         </Form.Group>
 
-        <Button variant="primary" type="submit" className="w-100">
+        <Button variant="outline-primary" type="submit" className="w-100">
           Register
         </Button>
       </Form>
@@ -123,12 +138,20 @@ const Register = () => {
       </p>
 
       <div className="optional-login">
-        <Button className="google btn-light w-100 my-2" onClick={handelGoogleLogin}>
-          <FcGoogle></FcGoogle>
+        <Button
+          variant="outline-success"
+          className="w-100 my-2"
+          onClick={handelGoogleLogin}
+        >
+          <BsGoogle></BsGoogle>
           <span className="ms-2">Sign In with Google</span>
         </Button>
-        <Button className="google btn-light w-100 my-2">
-          <DiGithubAlt></DiGithubAlt>
+        <Button 
+        variant="outline-dark"
+        className="w-100 my-2"
+        onClick={handelGithubLogin}
+        >
+          <BsGithub></BsGithub>
           <span className="ms-2">Sign In with Github</span>
         </Button>
       </div>
