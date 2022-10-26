@@ -51,8 +51,8 @@ const Login = () => {
   };
 
   return (
-    <section className="py-5">
-      <h3 className="text-light my-3">Please Login !</h3>
+    <section className="py-5 container">
+      <h3 className="my-3">Please Login !</h3>
       <Form className="bg-light p-3 rounded" onSubmit={handelLogin}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>
@@ -84,9 +84,9 @@ const Login = () => {
           Login
         </Button>
       </Form>
-      <p className="my-3 text-center text-light">
+      <p className="my-3 text-center">
         New Here?{" "}
-        <Link to="/register" className="text-light">
+        <Link to="/register" className="text-dark">
           Create a New Account
         </Link>
       </p>

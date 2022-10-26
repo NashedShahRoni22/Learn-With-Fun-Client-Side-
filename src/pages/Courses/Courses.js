@@ -13,9 +13,9 @@ const Courses = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   return (
-    <section className="row py-5 my-5">
+    <section className="row py-5 my-5 mx-auto container">
       <div className="col-3">
-        <Button variant="outline-light" className="d-md-none" onClick={handleShow}>
+        <Button variant="outline-primary" className="d-md-none" onClick={handleShow}>
           <FaDiscourse></FaDiscourse>
         </Button>
 

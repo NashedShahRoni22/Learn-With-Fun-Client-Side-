@@ -5,11 +5,11 @@ import Header from "../../components/Header/Header";
 
 const Main = () => {
   return (
-    <section className="container">
+    <div>
       <Header></Header>
       <Outlet></Outlet>
       <Footer></Footer>
-    </section>
+    </div>
   );
 };
 

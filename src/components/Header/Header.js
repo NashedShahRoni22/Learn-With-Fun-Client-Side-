@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import "./Header.css";
 import logo from "../../img/logo.png";
 import { AuthContext } from "../../context/AuthProvider";
+import { Container } from "react-bootstrap";
+import { FaBars } from "react-icons/fa";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -19,11 +21,16 @@ const Header = () => {
   }
   return (
     <Navbar expand="md" className="navbar-container">
+      <Container>
       <Navbar.Brand href="#home">
         <img src={logo} alt="" height="40px" />
         <span className="text-light ms-3">Learn with Fun</span>
       </Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
+      <Navbar.Toggle aria-controls="basic-navbar-nav" >
+          <FaBars className="text-light"></FaBars>
+      </Navbar.Toggle>
+
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ms-auto me-auto navlink">
           <Link to="/">Home</Link>
@@ -59,6 +66,7 @@ const Header = () => {
           </Link>
         )}
       </Navbar.Collapse>
+      </Container>
     </Navbar>
   );
 };

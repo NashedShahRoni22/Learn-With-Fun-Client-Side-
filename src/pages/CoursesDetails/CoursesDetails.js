@@ -15,7 +15,7 @@ const CoursesDetails = () => {
   const { title, thumbnail, description, video, quiz, projects, price } =
     course;
   return (
-    <section className="py-5">
+    <section className="py-5 my-5 container">
       <Card>
         <Card.Header>
           {" "}
@@ -26,10 +26,10 @@ const CoursesDetails = () => {
         </Card.Header>
 
         <div className="course-details row align-items-center p-2">
-          <div className="col-6">
+          <div className="col-8">
             <Card.Img variant="top" src={thumbnail} height="400px" />
           </div>
-          <div className="col-6">
+          <div className="col-4">
             <h5>
               <FcVideoCall />
               Video: {video}

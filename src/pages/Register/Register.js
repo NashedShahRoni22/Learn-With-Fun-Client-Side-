@@ -76,8 +76,8 @@ const Register = () => {
   }
 
   return (
-    <section className="py-5">
-      <h3 className="text-light my-3">Please Register !</h3>
+    <section className="py-5 container">
+      <h3 className="my-3">Please Register !</h3>
       <Form className="bg-light p-3 rounded" onSubmit={handelRegistration}>
         <Form.Group className="mb-3" controlId="formUserName">
           <Form.Label>
@@ -115,9 +115,9 @@ const Register = () => {
           Register
         </Button>
       </Form>
-      <p className="my-3 text-center text-light">
+      <p className="my-3 text-center">
         Already Registered?{" "}
-        <Link to="/login" className="text-light">
+        <Link to="/login" className="text-dark">
           Please Login
         </Link>
       </p>
