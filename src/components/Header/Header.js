@@ -36,8 +36,8 @@ const Header = () => {
           <Nav className="ms-auto me-auto navlink">
             <Link to="/">Home</Link>
             <Link to="/courses">Courses</Link>
-            <Link to="/">FAQ</Link>
-            <Link to="/">Blog</Link>
+            <Link to="/faq">FAQ</Link>
+            <Link to="/blog">Blog</Link>
           </Nav>
 
           {user?.uid ? (

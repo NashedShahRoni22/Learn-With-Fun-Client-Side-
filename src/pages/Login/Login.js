@@ -43,10 +43,12 @@ const Login = () => {
         console.log(user);
         form.reset();
         navigate(from, { replace: true });
-        toast.success('Login Successfull!')
+        toast.success('Login Successfull!');
       })
       .catch((e) => {
         console.error(e);
+        const errorMessage = e.message;
+        toast.error(errorMessage);
       });
   };
 

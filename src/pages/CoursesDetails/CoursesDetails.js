@@ -8,6 +8,7 @@ import {
   FcAnswers,
   FcParallelTasks,
   FcMoneyTransfer,
+  FcDownload,
 } from "react-icons/fc";
 
 const CoursesDetails = () => {
@@ -24,12 +25,15 @@ const CoursesDetails = () => {
   return (
     <section className="py-5 my-5 container">
       <Card>
-        <div className="card-head p-2 text-light">
+        <div className="card-head p-2 d-flex justify-content-between">
           {" "}
           <h4>
-            <FcViewDetails className="text-primary me-2"></FcViewDetails>
+            <FcViewDetails className="me-2 display-5"></FcViewDetails>
             {title}
           </h4>{" "}
+          <>
+          <FcDownload className="display-5"></FcDownload>
+          </>
         </div>
 
         <div className="course-details row align-items-center p-2">
@@ -64,7 +68,7 @@ const CoursesDetails = () => {
             <span className="text-muted">{description}</span>
           </Card.Text>
           <Link className="course-btn" to={`/checkout/${id}`}>
-            Get Premium <FaCrown />
+            Get Premium Access <FaCrown className="ms-3"/>
           </Link>
         </Card.Body>
       </Card>

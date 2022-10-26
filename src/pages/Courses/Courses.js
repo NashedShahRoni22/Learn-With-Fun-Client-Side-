@@ -15,7 +15,7 @@ const Courses = () => {
   return (
     <section className="row py-5 mx-auto container">
       <h2 className="text-center mb-5 fw-bold">Select Your Desire Course!</h2>
-      <div className="col-3">
+      <div className="col-2">
         <Button
           variant="outline-primary"
           className="d-md-none"
@@ -43,7 +43,7 @@ const Courses = () => {
           </Offcanvas.Body>
         </Offcanvas>
       </div>
-      <div className="col-9">
+      <div className="col-10">
         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5">
           {courses.map((course) => (
             <div key={course.id}>
