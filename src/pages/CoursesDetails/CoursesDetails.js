@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import { FaCrown } from "react-icons/fa";
+import Pdf from "react-to-pdf";
 import {
   FcVideoCall,
   FcViewDetails,
@@ -13,18 +14,21 @@ import {
 
 const CoursesDetails = () => {
   const course = useLoaderData();
-  const { id, 
-    title, 
-    thumbnail, 
-    description, 
-    video, 
-    quiz, 
-    projects, 
-    price } =
+  const { id, title, thumbnail, description, video, quiz, projects, price } =
     course;
+
+  //react to pdf
+  const ref = React.createRef();
+  const options = {
+    orientation: "portrait",
+    unit: "in",
+    format: [22, 20],
+  };
+  
   return (
     <section className="py-5 my-5 container">
-      <Card>
+
+      <Card ref={ref}>
         <div className="card-head p-2 d-flex justify-content-between">
           {" "}
           <h4>
@@ -32,7 +36,23 @@ const CoursesDetails = () => {
             {title}
           </h4>{" "}
           <>
-          <FcDownload className="display-5"></FcDownload>
+          <Pdf
+          targetRef={ref}
+          filename="post.pdf"
+          options={options}
+          x={0.5}
+          y={0.5}
+          scale={1}
+        >
+          {({ toPdf }) => (
+            <button
+              onClick={toPdf}
+              className="text-2xl border-2 border-black p-2 rounded"
+            >
+              <FcDownload />
+            </button>
+          )}
+        </Pdf>
           </>
         </div>
 
@@ -42,19 +62,19 @@ const CoursesDetails = () => {
           </div>
           <div className="col-4">
             <h5>
-              <FcVideoCall className="me-2"/>
+              <FcVideoCall className="me-2" />
               {video} videos
             </h5>
             <h5>
-              <FcAnswers className="me-2"/>
+              <FcAnswers className="me-2" />
               {quiz} Quizs
             </h5>
             <h5>
-              <FcParallelTasks className="me-2"/>
+              <FcParallelTasks className="me-2" />
               {projects} Projects
             </h5>
             <h5>
-              <FcMoneyTransfer className="me-2"/> 
+              <FcMoneyTransfer className="me-2" />
               {price} BDT
             </h5>
           </div>
@@ -68,7 +88,7 @@ const CoursesDetails = () => {
             <span className="text-muted">{description}</span>
           </Card.Text>
           <Link className="course-btn" to={`/checkout/${id}`}>
-            Get Premium Access <FaCrown className="ms-3"/>
+            Get Premium Access <FaCrown className="ms-3" />
           </Link>
         </Card.Body>
       </Card>

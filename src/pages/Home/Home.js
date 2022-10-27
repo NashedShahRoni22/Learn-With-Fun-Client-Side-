@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import banner from "../../img/banner-img.png";
-import "./Home.css";
 
 const Home = () => {
   return (

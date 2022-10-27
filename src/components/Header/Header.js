@@ -1,23 +1,27 @@
 import React, { useContext } from "react";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import { Link } from "react-router-dom";
-import "./Header.css";
 import logo from "../../img/logo.png";
 import { AuthContext } from "../../context/AuthProvider";
-import { Container } from "react-bootstrap";
+import { Container, Nav, Navbar } from "react-bootstrap";
 import { FaBars } from "react-icons/fa";
-import { MdLogout, MdLogin, MdDarkMode, MdOutlineDarkMode } from "react-icons/md";
+import {
+  MdLogout,
+  MdLogin,
+  MdDarkMode,
+  MdOutlineDarkMode,
+} from "react-icons/md";
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
 
-  const [theme, setTheme] = useState(<MdOutlineDarkMode className="text-light me-3"></MdOutlineDarkMode>)
+  const [theme, setTheme] = useState(
+    <MdOutlineDarkMode className="text-light m-3"></MdOutlineDarkMode>
+  );
   //handelTheme
-  const handelTheme =()=>{
-    setTheme(<MdDarkMode className="text-light me-3"></MdDarkMode>)
-  }
+  const handelTheme = () => {
+    setTheme(<MdDarkMode className="text-light m-3"></MdDarkMode>);
+  };
   //handel user log out
   const handelLogOut = () => {
     logOut()
@@ -29,8 +33,10 @@ const Header = () => {
   return (
     <Navbar expand="md" className="navbar-container">
       <Container>
-        <Navbar.Brand>
-          <Link to='/'><img src={logo} alt="" height="40px" /></Link>
+        <Navbar.Brand className="navlink">
+          <NavLink to="/">
+            <img src={logo} alt="" height="40px" />
+          </NavLink>
           <span className="text-light ms-3">Learn with Fun</span>
         </Navbar.Brand>
 
@@ -40,20 +46,18 @@ const Header = () => {
 
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto me-auto navlink">
-            <Link to="/">Home</Link>
-            <Link to="/courses">Courses</Link>
-            <Link to="/faq">FAQ</Link>
-            <Link to="/blog">Blog</Link>
+            <NavLink to="/home">Home</NavLink>
+            <NavLink to="/courses">Courses</NavLink>
+            <NavLink to="/faq">FAQ</NavLink>
+            <NavLink to="/blog">Blog</NavLink>
           </Nav>
 
           {/* dark light logo  */}
-          <div onClick={handelTheme}>
-            {theme}
-          </div>
+          <div onClick={handelTheme}>{theme}</div>
 
           {user?.uid ? (
             <>
-              <Link
+              <NavLink
                 to="/"
                 data-toggle="tooltip"
                 data-placement="bottom"
@@ -65,16 +69,17 @@ const Header = () => {
                   alt=""
                   className="rounded-circle"
                 ></img>
-              </Link>
-              <MdLogout
-                onClick={handelLogOut}
-                className="text-light ms-3"
-              />
+              </NavLink>
+              <MdLogout onClick={handelLogOut} className="text-light ms-3" />
+              <span className="ms-2 text-light">Sign Out</span>
             </>
           ) : (
-            <Link to="/login">
-              <MdLogin className="text-light" />
-            </Link>
+            <>
+              <NavLink to="/login">
+                <MdLogin className="text-light" />
+              </NavLink>
+              <span className="ms-2 text-light">Sign In</span>
+            </>
           )}
         </Navbar.Collapse>
       </Container>

@@ -3,7 +3,7 @@ import errorImg from '../../img/error-page.jpg'
 
 const ErrorPage = () => {
     return (
-        <div>
+        <div className='container mx-auto text-center'>
             <img src={errorImg} alt="" className='img-fluid'/>
         </div>
     );

@@ -2,6 +2,41 @@
 *{
     font-family: 'Nunito', sans-serif;
 }
+/* home css */
+.home-container{
+    background: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.6)),
+    url(../src/img/background.jpg);
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+}
+/* header css */
+.navbar-container{
+    background-color: #5837D0;
+}
+.navbar-container svg{
+    height: 30px;
+    width: 30px;
+}
+.navlink a{
+    text-decoration: none;
+    margin: 8px 8px;
+    font-size: 18px;
+    color: white;
+    letter-spacing: 1px;
+}
+.navlink a:hover{
+    color: white;
+}
+.navLink a.active{
+    border-bottom: 2px solid white;
+}
+/* footer css */
+.footer-container{
+    background-color: #5837D0;
+} 
+
+/* custom buttons  */
 .home-btn, .course-btn{
     background-color: #5837d0;
     color: white;

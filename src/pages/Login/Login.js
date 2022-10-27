@@ -19,7 +19,7 @@ const Login = () => {
       .then((res) => {
         const user = res.user;
         navigate(from, { replace: true });
-        toast.success('User Registered Successfully!');
+        toast.success('Login Successfull!');
         console.log(user);
       })
       .catch((e) => {
@@ -32,7 +32,7 @@ const Login = () => {
       .then((res) => {
         const user = res.user;
         navigate(from, { replace: true });
-        toast.success('User Registered Successfully!');
+        toast.success('Login Successfull!');
         console.log(user);
       })
       .catch((e) => {
