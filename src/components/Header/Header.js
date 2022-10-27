@@ -7,8 +7,8 @@ import {
   MdLogout,
   MdLogin,
   MdDarkMode,
-  MdOutlineDarkMode,
 } from "react-icons/md";
+import { BsSun } from "react-icons/bs";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
@@ -53,7 +53,7 @@ const Header = () => {
 
           {/* toogle theme icon  */}
           <div className="m-2" onClick={toggle}>
-            {theme ? <MdDarkMode className="text-light"></MdDarkMode> : <MdOutlineDarkMode className="text-light"></MdOutlineDarkMode>}
+            {theme ? <MdDarkMode className="text-dark"></MdDarkMode> : <BsSun className="text-light"></BsSun> }
           </div>
 
           {user?.uid ? (

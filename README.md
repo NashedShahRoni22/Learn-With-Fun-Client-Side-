@@ -6,7 +6,7 @@ Github Server Side Repository:
 https://github.com/programming-hero-web-course1/b610-lerning-platform-server-side-NashedShahRoni22
 
 ###This app is hosted on following firebase link:
-https://quizhub-as9.netlify.app/
+https://learn-with-fun-6ce4e.web.app/
 
 ##React Package I have used in this app are:
 1. React Router

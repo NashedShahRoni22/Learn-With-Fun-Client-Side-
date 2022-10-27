@@ -9,8 +9,8 @@ import {
   FcAnswers,
   FcParallelTasks,
   FcMoneyTransfer,
-  FcDownload,
 } from "react-icons/fc";
+import {FaFileDownload} from "react-icons/fa";
 
 const CoursesDetails = () => {
   const course = useLoaderData();
@@ -33,24 +33,19 @@ const CoursesDetails = () => {
           {" "}
           <h4>
             <FcViewDetails className="me-2 display-5"></FcViewDetails>
-            {title}
+            <strong>{title}</strong>
           </h4>{" "}
           <>
           <Pdf
           targetRef={ref}
-          filename="post.pdf"
+          filename='course-details.pdf'
           options={options}
           x={0.5}
           y={0.5}
           scale={1}
         >
-          {({ toPdf }) => (
-            <button
-              onClick={toPdf}
-              className="text-2xl border-2 border-black p-2 rounded"
-            >
-              <FcDownload />
-            </button>
+          {({ toPdf }) => (            
+              <FaFileDownload onClick={toPdf} className="display-5 text-primary"/>
           )}
         </Pdf>
           </>

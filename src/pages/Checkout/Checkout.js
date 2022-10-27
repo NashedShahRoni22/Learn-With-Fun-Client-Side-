@@ -16,7 +16,7 @@ function MyVerticallyCenteredModal(props) {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header className="bg-primary text-light">
+      <Modal.Header className="checkout-header text-light">
         <Modal.Title id="contained-modal-title-vcenter">
           Congratulations !
         </Modal.Title>
@@ -38,7 +38,7 @@ function MyVerticallyCenteredModal(props) {
         </Form.Group>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="outline-primary">Continue Payment</Button>
+        <Link to='*' className="btn btn-primary">Continue Payment</Link>
         <Button onClick={props.onHide} variant="outline-danger">
           Close
         </Button>

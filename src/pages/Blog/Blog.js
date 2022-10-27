@@ -1,5 +1,6 @@
 import React from "react";
 import Accordion from "react-bootstrap/Accordion";
+import blogImg from "../../img/blog-img.png";
 
 const Blog = () => {
   return (
@@ -60,6 +61,7 @@ const Blog = () => {
           </Accordion.Item>
         </Accordion>
       </div>
+      <img src={blogImg} alt="" />
     </section>
   );
 };
