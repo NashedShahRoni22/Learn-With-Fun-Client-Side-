@@ -70,7 +70,7 @@ const Header = () => {
                   className="rounded-circle"
                 ></img>
               </NavLink>
-              <MdLogout onClick={handelLogOut} className="text-light ms-3" />
+              <MdLogout onClick={handelLogOut} className="text-light ms-3 logout-icon" />
               <span className="ms-2 text-light">Sign Out</span>
             </>
           ) : (
