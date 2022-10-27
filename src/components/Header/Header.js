@@ -15,13 +15,12 @@ import { NavLink } from "react-router-dom";
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
 
-  const [theme, setTheme] = useState(
-    <MdOutlineDarkMode className="text-light m-3"></MdOutlineDarkMode>
-  );
-  //handelTheme
-  const handelTheme = () => {
-    setTheme(<MdDarkMode className="text-light m-3"></MdDarkMode>);
-  };
+  //toggle theme
+  const [theme, setTheme] = useState(false);
+  const toggle =()=>{
+    setTheme(!theme)
+  }
+
   //handel user log out
   const handelLogOut = () => {
     logOut()
@@ -52,8 +51,10 @@ const Header = () => {
             <NavLink to="/blog">Blog</NavLink>
           </Nav>
 
-          {/* dark light logo  */}
-          <div onClick={handelTheme}>{theme}</div>
+          {/* toogle theme icon  */}
+          <div className="m-2" onClick={toggle}>
+            {theme ? <MdDarkMode className="text-light"></MdDarkMode> : <MdOutlineDarkMode className="text-light"></MdOutlineDarkMode>}
+          </div>
 
           {user?.uid ? (
             <>
