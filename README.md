@@ -1,12 +1,12 @@
-###The github repository of the app is uploaded on following github link:
-Github Clent Side Repository:
-https://github.com/programming-hero-web-course1/b610-learning-platform-client-side-NashedShahRoni22
-
-Github Server Side Repository:
-https://github.com/programming-hero-web-course1/b610-lerning-platform-server-side-NashedShahRoni22
-
 ###This app is hosted on following firebase link:
 https://learn-with-fun-6ce4e.web.app/
+
+###The github repository of the app is uploaded on following github link:
+Github Clent Side Repository:
+https://github.com/NashedShahRoni22/Learn-With-Fun-Client-Side-
+
+Github Server Side Repository:
+https://github.com/NashedShahRoni22/Learn-With-Fun-Server-Side-
 
 ##React Package I have used in this app are:
 1. React Router
